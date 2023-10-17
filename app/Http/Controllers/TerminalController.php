@@ -1,14 +1,21 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Repositories\TerminalRepository; // Importez la classe du repository
 use App\Models\Terminal;
 use Illuminate\Http\Request;
 use App\Models\PorteEmbarquement;
 use Illuminate\Support\Facades\DB;
 
+
 class TerminalController extends Controller
 {
+    protected $terminalRepository; // Ajoutez une propriété pour le repository
+
+    public function __construct(TerminalRepository $terminalRepository)
+    {
+        $this->terminalRepository = $terminalRepository;
+    }
 
     public function liste()
     {
@@ -16,6 +23,7 @@ class TerminalController extends Controller
 
         return view('terminal.index', compact('terminals'));
     }
+
     public function index()
     {
         $terminals = Terminal::all();
@@ -31,13 +39,8 @@ class TerminalController extends Controller
     {
         $data = $request->all();
 
-
-        DB::table('terminals')->insert([
-            'nom' => $data['nom'],
-            'emplacement' => $data['emplacement'],
-            'date_mise_en_service' => $data['date_mise_en_service'],
-
-        ]);
+        // Utilisez le repository pour enregistrer les données
+        $this->terminalRepository->store($data);
 
         return redirect()->route('terminal.index');
     }
@@ -51,13 +54,8 @@ class TerminalController extends Controller
     {
         $data = $request->all();
 
-        DB::table('terminals')
-            ->where('id', $terminal->id)
-            ->update([
-                'nom' => $data['nom'],
-                'emplacement' => $data['emplacement'],
-                'date_mise_en_service' => $data['date_mise_en_service'],
-            ]);
+        // Utilisez le repository pour mettre à jour les données
+        $this->terminalRepository->update($terminal, $data);
 
         return redirect()->route('terminal.index');
     }

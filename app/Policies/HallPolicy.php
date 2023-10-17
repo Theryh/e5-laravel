@@ -36,13 +36,13 @@ class HallPolicy
 
     public function update(User $user, Hall $hall)
     {
-        // Seuls les Administrateurs peuvent mettre à jour les halls.
+        // Seuls les Administrateurs peuvent mettre à jour les halls
         return $user->isAdmin();
     }
 
     public function delete(User $user, Hall $hall)
     {
-        // Seuls les Administrateurs peuvent supprimer les halls.
+        // Seuls les Administrateurs peuvent supprimer les halls
         return $user->isAdmin();
     }
     /**

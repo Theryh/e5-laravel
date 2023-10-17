@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+
 class Terminal extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nom', 'emplacement', 'date_mise_en_service', '_token'];
 
     protected $factory = TerminalFactory::class;
 
