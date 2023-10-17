@@ -91,5 +91,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/terminal', [TerminalController::class, 'index'])->name('terminal.index');
     Route::get('/porte-embarquement', [PorteEmbarquementController::class, 'action'])->name('porte-embarquement.index');
     Route::get('/hall', [HallController::class, 'index'])->name('hall.index');
-    // ...
 });

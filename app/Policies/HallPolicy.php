@@ -22,7 +22,7 @@ class HallPolicy
      */
     public function view(User $user, Hall $hall)
     {
-        // Tous les utilisateurs, y compris les Opérateurs et les Administrateurs, peuvent voir les halls.
+
         return true;
     }
 

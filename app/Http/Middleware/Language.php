@@ -13,7 +13,7 @@ class Language
         if (Session::has("locale")) {
             App::setLocale(Session::get("locale"));
         } else {
-            // La langue par défaut (en cas d'absence de "locale" en session)
+            // La langue par défaut
             App::setLocale("en");
         }
 

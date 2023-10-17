@@ -9,7 +9,7 @@ class PorteEmbarquement extends Model
 {
     use HasFactory;
 
-    protected $table = 'porte_embarquements'; // Spécifiez le nom de la table
+    protected $table = 'porte_embarquements';
 
     protected $factory = PorteEmbarquementFactory::class;
 

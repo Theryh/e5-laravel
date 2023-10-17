@@ -12,12 +12,12 @@ class HallSeeder extends Seeder
     {
         $bouncer = Bouncer::create();
 
-        // Crée le rôle "opérateur"
+
         $bouncer->role()->create([
             'name' => 'opérateur',
         ]);
 
-        // Crée le rôle "administrateur"
+
         $bouncer->role()->create([
             'name' => 'administrateur',
         ]);
