@@ -31,12 +31,17 @@ Exécutez les migrations pour créer les tables de base de données :
 - php artisan migrate
 
 ## Rôles et Autorisations
-Admin
+
+## Admin
+
 L'administrateur a un accès complet à toutes les ressources de l'application, y compris les Halls, les Portes d'Embarquement et les Terminaux.
+
 L'administrateur peut effectuer des opérations de création, modification et suppression sur toutes ces ressources.
 
 ## Opérateur
+
 L'opérateur a accès uniquement aux ressources de Portes d'Embarquement.
+
 L'opérateur peut effectuer des opérations de création, modification et suppression sur les Portes d'Embarquement.
 
 ## Attribution d'Opérateur (par défaut)
