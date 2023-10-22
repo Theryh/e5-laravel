@@ -57,9 +57,13 @@ Ouvrez le fichier User.php dans le dossier app de votre application Laravel.
 Localisez la méthode boot dans le modèle User. Vous pouvez la trouver vers la ligne 96 du fichier User.php.
 
 À l'intérieur de la méthode boot, recherchez la ligne suivante :
+
 $bouncer->assign('operateur')->to($user);
+
 Modifiez 'operateur' en 'admin' :
+
 $bouncer->assign('admin')->to($user);
+
 Cela signifie que chaque nouvel utilisateur inscrit sera automatiquement attribué au rôle d'administrateur. Si vous souhaitez l'attribution inverse (par défaut, tous les nouveaux utilisateurs sont des administrateurs), vous pouvez effectuer l'inversion de ces étapes.
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
