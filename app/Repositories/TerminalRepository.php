@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Terminal;
-// Ce Repository est Fonctionnel.
+
 class TerminalRepository
 {
     protected $terminal;
@@ -33,7 +33,7 @@ class TerminalRepository
 
         return $this->save($terminal, $inputs);
     }
-
+//
     public function update(Terminal $terminal, array $inputs)
     {
         return $this->save($terminal, $inputs);

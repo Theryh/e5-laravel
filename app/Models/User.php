@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Silber\Bouncer\Bouncer;
 
 /**
  * App\Models\User
@@ -85,8 +86,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function isAdmin()
+    protected static function boot()
     {
-        return $this->isAn('admin'); // Vérifie si l'utilisateur a le rôle 'admin'
+        parent::boot();
+
+        static::created(function ($user) {
+
+            $bouncer = app(Bouncer::class);
+            $bouncer->assign('admin')->to($user);
+        });
     }
 }

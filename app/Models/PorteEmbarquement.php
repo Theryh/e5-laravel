@@ -13,6 +13,8 @@ class PorteEmbarquement extends Model
 
     protected $factory = PorteEmbarquementFactory::class;
 
+    protected $fillable = ['nom', 'est_ouverte', 'capacite_maximale', 'hall_id'];
+
     public function hall()
     {
         return $this->belongsTo(Hall::class);

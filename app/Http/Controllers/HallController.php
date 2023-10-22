@@ -6,7 +6,8 @@ use App\Models\Hall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Silber\Bouncer\Bouncer;
-use Boucer;
+use Silber\Bouncer\Database;
+use Illuminate\Support\Facades\Gate;
 
 class HallController extends Controller
 {
@@ -18,7 +19,11 @@ class HallController extends Controller
 
     public function create()
     {
-        return view('hall.create');
+        if (Gate::allows('hall-access')) {
+            return view('hall.create');
+        } else {
+            abort(403, 'Accès refusé car votre compte n\'a pas le rôle Admin');
+        }
     }
 
     public function store(Request $request)
@@ -35,7 +40,11 @@ class HallController extends Controller
 
     public function edit(Hall $hall)
     {
-        return view('hall.edit', compact('hall'));
+        if (Gate::allows('hall-access')) {
+            return view('hall.edit', compact('hall'));
+        } else {
+            abort(403, 'Accès refusé car votre compte n\'a pas le rôle Admin');
+        }
     }
 
     public function update(Request $request, Hall $hall)
@@ -49,7 +58,6 @@ class HallController extends Controller
                 'personnel_minimum' => $data['personnel_minimum'],
             ]);
 
-
         return redirect()->route('hall.index');
     }
 
@@ -57,15 +65,10 @@ class HallController extends Controller
     {
         $hall->delete();
 
-        return redirect()->route('hall.index');
+        if (Gate::allows('hall-access')) {
+            return redirect()->route('hall.index');
+        } else {
+            abort(403, 'Accès refusé car votre compte n\'a pas le rôle Admin');
+        }
     }
-
-    protected function authenticated(Request $request, $user)
-{
-    // Vérifiez si l'utilisateur a un certain critère (par exemple, son email)
-    if ($user->email === 'stheryhanot44@gmail.com') {
-        // Attribuez le rôle "administrateur" à l'utilisateur
-        Bouncer::assign('administrateur')->to($user);
-    }
-}
 }

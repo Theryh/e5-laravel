@@ -92,3 +92,25 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/porte-embarquement', [PorteEmbarquementController::class, 'action'])->name('porte-embarquement.index');
     Route::get('/hall', [HallController::class, 'index'])->name('hall.index');
 });
+Route::put('/porte-embarquement/{porte_embarquement}', 'PorteEmbarquementController@update')->name('porte-embarquement.update');
+Route::put('/terminal/{terminal}', 'TerminalController@update')->name('terminal.update');
+
+Route::get('/terminal/create', [TerminalController::class, 'create'])->name('terminal.create');
+Route::post('/terminal', [TerminalController::class, 'store'])->name('terminal.store');
+
+
+
+Route::get('/terminal', [TerminalController::class, 'index'])->name('terminal.index');
+Route::get('/terminal/create', [TerminalController::class, 'create'])->name('terminal.create');
+Route::post('/terminal', [TerminalController::class, 'store'])->name('terminal.store');
+Route::get('/terminal/{terminal}', [TerminalController::class, 'show'])->name('terminal.show');
+Route::get('/terminal/{terminal}/edit', [TerminalController::class, 'edit'])->name('terminal.edit');
+Route::put('/terminal/{terminal}', [TerminalController::class, 'update'])->name('terminal.update');
+Route::delete('/terminal/{terminal}', [TerminalController::class, 'destroy'])->name('terminal.destroy');
+Route::get('/porte-embarquement', [PorteEmbarquementController::class, 'index'])->name('porte-embarquement.index');
+Route::get('/porte-embarquement/create', [PorteEmbarquementController::class, 'create'])->name('porte-embarquement.create');
+Route::post('/porte-embarquement', [PorteEmbarquementController::class, 'store'])->name('porte-embarquement.store');
+Route::get('/porte-embarquement/{porte_embarquement}', [PorteEmbarquementController::class, 'show']);
+Route::get('/porte-embarquement/{porte_embarquement}/edit', [PorteEmbarquementController::class, 'edit'])->name('porte-embarquement.edit');
+Route::put('/porte-embarquement/{porte_embarquement}', [PorteEmbarquementController::class, 'update'])->name('porte-embarquement.update');
+Route::delete('/porte-embarquement/{porte_embarquement}', [PorteEmbarquementController::class, 'destroy'])->name('porte-embarquement.destroy');

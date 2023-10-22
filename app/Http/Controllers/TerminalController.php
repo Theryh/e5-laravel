@@ -6,8 +6,7 @@ use App\Models\Terminal;
 use Illuminate\Http\Request;
 use App\Models\PorteEmbarquement;
 use Illuminate\Support\Facades\DB;
-
-
+use Illuminate\Support\Facades\Gate;
 class TerminalController extends Controller
 {
     protected $terminalRepository; // Ajoutez une propriété pour le repository
@@ -32,7 +31,11 @@ class TerminalController extends Controller
 
     public function create()
     {
-        return view('terminal.create');
+        if (Gate::allows('terminaux-access')) {
+            return view('terminal.create');
+        } else {
+            abort(403, 'Accès refusé car votre compte n a pas le rôle Admin');
+        }
     }
 
     public function store(Request $request)
@@ -47,7 +50,11 @@ class TerminalController extends Controller
 
     public function edit(Terminal $terminal)
     {
-        return view('terminal.edit', compact('terminal'));
+        if (Gate::allows('terminaux-access')) {
+            return view('terminal.edit', compact('terminal'));
+        } else {
+            abort(403, 'Accès refusé car votre compte n a pas le rôle Admin');
+        }
     }
 
     public function update(Request $request, Terminal $terminal)
@@ -64,6 +71,10 @@ class TerminalController extends Controller
     {
         $terminal->delete();
 
-        return redirect()->route('terminal.index');
+        if (Gate::allows('terminaux-access')) {
+            return redirect()->route('terminal.index');
+        } else {
+            abort(403, 'Accès refusé car votre compte na pas le rôle Admin');
+        }
     }
 }
