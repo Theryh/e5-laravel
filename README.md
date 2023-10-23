@@ -23,8 +23,9 @@ Naviguez dans le répertoire du projet Laravel cloné : cd nom_du_projet Exécut
 Dupliquez le fichier .env.example en tant que .env. Configurez les informations de la base de données dans le fichier .env.
 
 Étape 5 : Exécutez les migrations pour créer les tables de base de données :
-
+```bash
 - php artisan migrate
+```
 ## Rôles et Autorisations
 Admin
 L'administrateur a un accès complet à toutes les ressources de l'application, y compris les Halls, les Portes d'Embarquement et les Terminaux.
