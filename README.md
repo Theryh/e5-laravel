@@ -38,7 +38,7 @@ L'opérateur a accès uniquement aux ressources de Portes d'Embarquement.
 L'opérateur peut effectuer des opérations de création, modification et suppression sur les Portes d'Embarquement.
 
 ## Attribution d'Opérateur (par défaut)
-Lorsqu'un nouvel utilisateur s'inscrit, il se voit attribuer le rôle d'opérateur par défaut.
+Lorsqu'un nouvel utilisateur s'inscrit, il se voit attribuer le rôle d'admin par défaut.
 
 ## Comment Modifier le Rôle (Admin ou Opérateur) pour un Nouvel Utilisateur
 Si vous souhaitez que les nouveaux utilisateurs soient automatiquement attribués au rôle d'administrateur, vous pouvez suivre ces étapes :
