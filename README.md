@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 =======
 ## Voici toutes les informations à savoir sur ce projet
 
@@ -16,15 +15,17 @@ Une base de données (ex. MySQL) installée et configurée
 Ouvrez un terminal.
 Naviguez vers le répertoire où vous souhaitez installer le projet.
 Clonez le dépôt Git du projet Laravel à partir de votre référentiel distant avec la commande :
+```bash
 - git clone <URL_du_projet>
-
+```
  Étape 3 :
 
 Naviguez dans le répertoire du projet Laravel cloné :
 cd nom_du_projet
 Exécutez la commande Composer pour installer les dépendances Laravel :
+```bash
 - composer install
-
+```
 Étape 4 :
 
 Dupliquez le fichier .env.example en tant que .env.
@@ -32,8 +33,9 @@ Configurez les informations de la base de données dans le fichier .env.
 
  Étape 5 :
 Exécutez les migrations pour créer les tables de base de données :
+```bash
 - php artisan migrate
-
+```
 ## Rôles et Autorisations
 
 ## Admin
@@ -59,13 +61,13 @@ Ouvrez le fichier User.php dans le dossier app de votre application Laravel.
 Localisez la méthode boot dans le modèle User. Vous pouvez la trouver vers la ligne 96 du fichier User.php.
 
 À l'intérieur de la méthode boot, recherchez la ligne suivante :
-
+```bash
 $bouncer->assign('operateur')->to($user);
-
+```
 Modifiez 'operateur' en 'admin' :
-
+```bash
 $bouncer->assign('admin')->to($user);
-
+```
 Cela signifie que chaque nouvel utilisateur inscrit sera automatiquement attribué au rôle d'administrateur. Si vous souhaitez l'attribution inverse (par défaut, tous les nouveaux utilisateurs sont des administrateurs), vous pouvez effectuer l'inversion de ces étapes.
 >>>>>>> 752fcdbf1c38ec98eeba837085bffb597f347e50
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
