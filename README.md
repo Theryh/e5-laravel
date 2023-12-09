@@ -1,3 +1,7 @@
+Modification finale Laravel:
+
+Le système d'envoi de mails post-formulaire est opérationnel sur terminal, avec des composants partiellement fonctionnels. Les tests couvrent actuellement 50%, mais des problèmes sont apparu suite à des modifications dans Tinker, impactant ainsi la stabilité de mon site.
+
 =======
 
 ## Voici toutes les informations à savoir sur ce projet
