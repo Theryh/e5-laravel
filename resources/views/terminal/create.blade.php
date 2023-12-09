@@ -21,7 +21,6 @@
             <input type="date" name="date_mise_en_service" id="date_mise_en_service" class="form-control" required>
         </div>
 
-
         <button type="submit" class="btn btn-primary">{{ __('messages.Create') }}</button>
     </form>
 </div>

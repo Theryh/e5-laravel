@@ -60,9 +60,11 @@ Route::delete('/portes-embarquement/{porte_embarquement}', 'PorteEmbarquementCon
 Route::post('/portes-embarquement', 'PorteEmbarquementController@store')->name('portes-embarquement.store');
 Route::post('/portes-embarquement/create', 'PorteEmbarquementController@create')->name('portes-embarquement.create');
 
+Route::get('/setlocale/{locale}', function ($locale) {
+    // Votre logique pour changer la locale
+})->name('setlocale');
 
-
-
+Route::get('/accueil', [AccueilController::class, 'index'])->name('accueil.index');
 
   Route::get('/profile', [PorteEmbarquementController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [PorteEmbarquementController::class, 'update'])->name('profile.update');
@@ -114,3 +116,8 @@ Route::get('/porte-embarquement/{porte_embarquement}', [PorteEmbarquementControl
 Route::get('/porte-embarquement/{porte_embarquement}/edit', [PorteEmbarquementController::class, 'edit'])->name('porte-embarquement.edit');
 Route::put('/porte-embarquement/{porte_embarquement}', [PorteEmbarquementController::class, 'update'])->name('porte-embarquement.update');
 Route::delete('/porte-embarquement/{porte_embarquement}', [PorteEmbarquementController::class, 'destroy'])->name('porte-embarquement.destroy');
+Route::get('/porte-embarquement', 'PorteEmbarquementController@index')->name('porte-embarquement.index')->middleware('auth');
+
+Route::get('/porte-embarquement', [PorteEmbarquementController::class, 'index'])->name('porte-embarquement.index');
+Route::get('/porte-embarquement/create', [PorteEmbarquementController::class, 'create'])->name('porte-embarquement.create');
+Route::post('/porte-embarquement', [PorteEmbarquementController::class, 'store'])->name('porte-embarquement.store');

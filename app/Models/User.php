@@ -91,7 +91,6 @@ class User extends Authenticatable
         parent::boot();
 
         static::created(function ($user) {
-
             $bouncer = app(Bouncer::class);
             $bouncer->assign('admin')->to($user);
         });

@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\PorteEmbarquement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\PorteEmbarquementRequest; // Import de la classe PorteEmbarquementRequest
+
 
 class PorteEmbarquementController extends Controller
 {
     public function index()
     {
+        $this->middleware('auth'); // Ajoutez cette ligne pour appliquer le middleware auth
+
         $portesEmbarquement = PorteEmbarquement::all();
         return view('porte-embarquement.index', compact('portesEmbarquement'));
     }
@@ -35,31 +38,26 @@ class PorteEmbarquementController extends Controller
         }
     }
 
-    public function update(Request $request, PorteEmbarquement $porteEmbarquement)
+    public function update(PorteEmbarquementRequest $request, PorteEmbarquement $porteEmbarquement)
     {
-        $data = $request->all();
+        $data = $request->validated(); // Récupère les données validées
 
-        $estOuverte = isset($data['est_ouverte']) && $data['est_ouverte'] == 'on' ? 1 : 0;
-
-        // Utilisez l'objet $porteEmbarquement pour mettre à jour les données
         $porteEmbarquement->update([
             'nom' => $data['nom'],
-            'est_ouverte' => $estOuverte,
+            'est_ouverte' => $data['est_ouverte'] ?? 0,
             'capacite_maximale' => $data['capacite_maximale'],
         ]);
 
         return redirect()->route('porte-embarquement.index');
     }
 
-    public function store(Request $request)
+    public function store(PorteEmbarquementRequest $request)
     {
-        $data = $request->all();
-
-        $estOuverte = isset($data['est_ouverte']) && $data['est_ouverte'] == 'on' ? 1 : 0;
+        $data = $request->validated(); // Récupère les données validées
 
         DB::table('porte_embarquements')->insert([
             'nom' => $data['nom'],
-            'est_ouverte' => $estOuverte,
+            'est_ouverte' => $data['est_ouverte'] ?? 0,
             'capacite_maximale' => $data['capacite_maximale'],
         ]);
 
@@ -83,6 +81,7 @@ class PorteEmbarquementController extends Controller
         return view('porte-embarquement.index', compact('portesEmbarquement'));
     }
 }
+
 
 
 // <!--

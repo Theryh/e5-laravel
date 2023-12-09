@@ -3,10 +3,15 @@ namespace App\Http\Controllers;
 
 use App\Repositories\TerminalRepository; // Importez la classe du repository
 use App\Models\Terminal;
+use App\Mail\TerminalCreatedMail;
 use Illuminate\Http\Request;
 use App\Models\PorteEmbarquement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
+use App\Mail\TerminalUpdatedMail;
+
 class TerminalController extends Controller
 {
     protected $terminalRepository; // Ajoutez une propriété pour le repository
@@ -45,9 +50,12 @@ class TerminalController extends Controller
         // Utilisez le repository pour enregistrer les données
         $this->terminalRepository->store($data);
 
+        // Envoie l'e-mail
+        $terminal = new Terminal($data);
+        Mail::to('hello@example.com')->send(new TerminalCreatedMail($terminal));
+
         return redirect()->route('terminal.index');
     }
-
     public function edit(Terminal $terminal)
     {
         if (Gate::allows('terminaux-access')) {
@@ -63,6 +71,9 @@ class TerminalController extends Controller
 
         // Utilisez le repository pour mettre à jour les données
         $this->terminalRepository->update($terminal, $data);
+
+        // Envoie l'e-mail
+        Mail::to('hello@example.com')->send(new TerminalUpdatedMail($terminal));
 
         return redirect()->route('terminal.index');
     }
