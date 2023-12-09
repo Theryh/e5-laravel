@@ -1,4 +1,4 @@
-Le système d'envoi de mails post-formulaire est opérationnel, avec des composants partiellement fonctionnels. Les tests couvrent actuellement 50%, mais des problèmes sont apparues suite à des modifications dans Tinker, impactant aisni la stabilité du site.
+Le système d'envoi de mails post-formulaire est opérationnel pour terminal, avec des composants partiellement fonctionnels. Les tests couvrent actuellement 50%, mais des problèmes sont apparues suite à des modifications dans Tinker, impactant aisni la stabilité du site.
 =======
 
 ## Voici toutes les informations à savoir sur ce projet
