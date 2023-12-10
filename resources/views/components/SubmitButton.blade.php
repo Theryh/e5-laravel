@@ -11,3 +11,4 @@
         @endforeach
     </ul>
 @endif
+<!-- Ces composants sont utilisé pour le hall.create.blade.php -->
