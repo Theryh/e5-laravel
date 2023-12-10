@@ -1,4 +1,5 @@
 Le système d'envoi de mails post-formulaire est opérationnel pour terminal, avec des composants partiellement fonctionnels. Les tests couvrent actuellement 50%, mais des problèmes sont apparues suite à des modifications dans Tinker, impactant aisni la stabilité du site.
+
 J'ai ajouté et fais quoi depuis le dernier push de l'évalutation 2 ?
 - Ajouter les requests
 - Ajouter 1 repositories
