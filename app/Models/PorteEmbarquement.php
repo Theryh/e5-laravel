@@ -9,11 +9,9 @@ class PorteEmbarquement extends Model
 {
     use HasFactory;
 
-    protected $table = 'porte_embarquements';
+    protected $table = 'note_de_montage';
 
-    protected $factory = PorteEmbarquementFactory::class;
-
-    protected $fillable = ['nom', 'est_ouverte', 'capacite_maximale', 'hall_id'];
+    protected $fillable = ['nom', 'est_actif', 'ordre_de_priorite', 'hall_id', 'note']; // Utilisation des nouveaux noms de colonnes
 
     public function hall()
     {

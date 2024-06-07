@@ -13,13 +13,18 @@
         </div>
 
         <div class="form-group">
-            <label for="est_ouverte">{{ __('messages.Ouverte') }}</label>
-            <input type="checkbox" name="est_ouverte" id="est_ouverte" class="form-check-input" {{ $porteEmbarquement->est_ouverte ? 'checked' : '' }}>
+            <label for="est_actif">{{ __('messages.Ouverte') }}</label>
+            <input type="checkbox" name="est_actif" id="est_actif" class="form-check-input" {{ $porteEmbarquement->est_ouverte ? 'checked' : '' }}>
         </div>
 
         <div class="form-group">
-            <label for="capacite_maximale">{{ __('messages.Capacite') }}</label>
-            <input type="number" name="capacite_maximale" id="capacite_maximale" class="form-control" value="{{ $porteEmbarquement->capacite_maximale }}" required>
+            <label for="ordre_de_priorite">{{ __('messages.Capacite') }}</label>
+            <input type="number" name="ordre_de_priorite" id="ordre_de_priorite" class="form-control" value="{{ $porteEmbarquement->capacite_maximale }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="note">{{ __('Note: ') }}</label>
+            <textarea name="note" id="note" class="form-control" rows="4">{{ $porteEmbarquement->note ?? '' }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">{{ __('messages.Maj') }}</button>

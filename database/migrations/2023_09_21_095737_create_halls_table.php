@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('halls')) {
-            Schema::create('halls', function (Blueprint $table) {
+        if (!Schema::hasTable('lignelgv')) {
+            Schema::create('lignelgv', function (Blueprint $table) {
                 $table->id();
                 $table->string('nom');
                 $table->integer('personnel_minimum');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('halls');
+        Schema::dropIfExists('lignelgv');
     }
 };

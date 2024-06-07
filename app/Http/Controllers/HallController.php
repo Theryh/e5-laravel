@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Hall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Silber\Bouncer\Bouncer;
+use Silber\Bouncer\Database;
 use Illuminate\Support\Facades\Gate;
-use App\Http\Requests\HallRequest; // Import de la classe HallRequest
-use App\Mail\HallUpdatedMail;
-use App\Mail\HallCreatedMail;
-use Illuminate\Support\Facades\Mail;
 
 class HallController extends Controller
 {
@@ -28,11 +26,11 @@ class HallController extends Controller
         }
     }
 
-    public function store(HallRequest $request) // Utilisation de HallRequest pour la validation
+    public function store(Request $request)
     {
-        $data = $request->validated(); // Récupère les données validées
+        $data = $request->all();
 
-        DB::table('halls')->insert([
+        DB::table('lignelgv')->insert([
             'nom' => $data['nom'],
             'personnel_minimum' => $data['personnel_minimum'],
         ]);
@@ -49,9 +47,9 @@ class HallController extends Controller
         }
     }
 
-    public function update(HallRequest $request, Hall $hall) // Utilisation de HallRequest pour la validation
+    public function update(Request $request, Hall $hall)
     {
-        $data = $request->validated(); // Récupère les données validées
+        $data = $request->all();
 
         DB::table('halls')
             ->where('id', $hall->id)

@@ -13,8 +13,9 @@ class PorteEmbarquementFactory extends Factory
     {
         return [
             'nom' => $this->faker->word,
-            'est_ouverte' => $this->faker->boolean,
-            'capacite_maximale' => $this->faker->numberBetween(50, 200),
+            'est_actif' => $this->faker->boolean,
+            'ordre_de_priorite' => $this->faker->numberBetween(1, 100),
+            'note' => $this->faker->sentence(), // Ajout du champ "note"
         ];
     }
 }

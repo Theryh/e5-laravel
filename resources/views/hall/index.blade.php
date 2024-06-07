@@ -17,10 +17,14 @@
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
-<p><i>{{ __('messages.Note') }} </i></p>
+<center>
+<p>
+<p><i>{{ __('messages.InfoLGV') }} </i></p>
+</p>
+</center>
 @section('content')
 
-        <a href="{{ route('hall.create') }}" class="btn btn-primary">Ajouter un hall</a>
+        <a href="{{ route('hall.create') }}" class="btn btn-primary">{{__('messages.AjoutTerminal') }}</a>
 
 
     @foreach($halls as $hall)
@@ -28,14 +32,14 @@
         <p>{{ __('messages.Personnel minimum') }} {{ $hall->personnel_minimum }}</p>
 
 
-            <a href="{{ route('hall.edit', $hall) }}" class="btn btn-primary">Éditer</a>
+            <a href="{{ route('hall.edit', $hall) }}" class="btn btn-primary">{{__('messages.Edit') }}</a>
 
 
 
             <form method="POST" action="{{ route('hall.destroy', $hall) }}" style="display: inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de supprimer ce hall?')">Supprimer</button>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de supprimer cette équipe ?')">{{__('messages.Supp') }}</button>
             </form>
 
     @endforeach

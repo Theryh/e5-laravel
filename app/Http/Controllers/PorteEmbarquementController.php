@@ -4,75 +4,64 @@ namespace App\Http\Controllers;
 
 use App\Models\PorteEmbarquement;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
-use App\Http\Requests\PorteEmbarquementRequest; // Import de la classe PorteEmbarquementRequest
-
 
 class PorteEmbarquementController extends Controller
 {
     public function index()
     {
-        $this->middleware('auth'); // Ajoutez cette ligne pour appliquer le middleware auth
-
         $portesEmbarquement = PorteEmbarquement::all();
         return view('porte-embarquement.index', compact('portesEmbarquement'));
     }
 
     public function create()
     {
-        $porteEmbarquement = PorteEmbarquement::all();
-        if (Gate::allows('porte-access')) {
-            return view('porte-embarquement.create');
-        } else {
-            abort(403, 'Accès refusé car votre compte n\'a pas le rôle Admin');
-        }
+        return view('porte-embarquement.create');
     }
 
     public function edit(PorteEmbarquement $porteEmbarquement)
     {
-        if (Gate::allows('porte-access')) {
-            return view('porte-embarquement.edit', compact('porteEmbarquement'));
-        } else {
-            abort(403, 'Accès refusé car votre compte n\'a pas le rôle Admin');
-        }
+        return view('porte-embarquement.edit', compact('porteEmbarquement'));
     }
+    public function update(Request $request, PorteEmbarquement $porteEmbarquement)
+{
+    $data = $request->all();
 
-    public function update(PorteEmbarquementRequest $request, PorteEmbarquement $porteEmbarquement)
-    {
-        $data = $request->validated(); // Récupère les données validées
+    // Convertir la valeur de 'est_actif' en '1' ou '0'
+    $estActif = isset($data['est_actif']) ? 1 : 0;
 
-        $porteEmbarquement->update([
-            'nom' => $data['nom'],
-            'est_ouverte' => $data['est_ouverte'] ?? 0,
-            'capacite_maximale' => $data['capacite_maximale'],
-        ]);
+    $porteEmbarquement->update([
+        'nom' => $data['nom'],
+        'est_actif' => $estActif,
+        'ordre_de_priorite' => $data['ordre_de_priorite'] ?? null,
+        'note' => $data['note'],
+    ]);
 
-        return redirect()->route('porte-embarquement.index');
-    }
+    return redirect()->route('porte-embarquement.index');
+}
 
-    public function store(PorteEmbarquementRequest $request)
-    {
-        $data = $request->validated(); // Récupère les données validées
+public function store(Request $request)
+{
+    $data = $request->all();
 
-        DB::table('porte_embarquements')->insert([
-            'nom' => $data['nom'],
-            'est_ouverte' => $data['est_ouverte'] ?? 0,
-            'capacite_maximale' => $data['capacite_maximale'],
-        ]);
+    // Convertir la valeur de 'est_actif' en '1' ou '0'
+    $estActif = isset($data['est_actif']) ? 1 : 0;
 
-        return redirect()->route('porte-embarquement.index');
-    }
+    PorteEmbarquement::create([
+        'nom' => $data['nom'],
+        'est_actif' => $estActif,
+        'ordre_de_priorite' => $data['ordre_de_priorite'] ?? null,
+        'note' => $data['note'],
+    ]);
+
+    return redirect()->route('porte-embarquement.index');
+}
+
+
 
     public function destroy(PorteEmbarquement $porteEmbarquement)
     {
         $porteEmbarquement->delete();
-
-        if (Gate::allows('porte-access')) {
-            return redirect()->route('porte-embarquement.index');
-        } else {
-            abort(403, 'Accès refusé car votre compte n\'a pas le rôle Admin');
-        }
+        return redirect()->route('porte-embarquement.index');
     }
 
     public function action()
@@ -81,7 +70,6 @@ class PorteEmbarquementController extends Controller
         return view('porte-embarquement.index', compact('portesEmbarquement'));
     }
 }
-
 
 
 // <!--

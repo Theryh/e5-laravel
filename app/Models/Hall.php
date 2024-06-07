@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hall extends Model
 {
 
+    protected $table = 'lignelgv';
     protected $policies = [
         Hall::class => HallPolicy::class,
     ];

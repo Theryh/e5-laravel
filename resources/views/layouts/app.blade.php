@@ -12,22 +12,34 @@
     crossorigin="anonymous"></script>
   <title>@yield('title', 'Formation Laravel 10')</title>
 </head>
-
 <body>
-    <h1></h1>
-    <div class="dropdow-menu" aria-labelledby="navbarDropDown">
-        <a href="{{ route('change-language', ['locale' => 'en']) }}">English</a>
-        <a href="{{ route('change-language', ['locale' => 'fr']) }}">Français</a>
+    <header>
+        <center>
+        <img src="{{ asset('logo_chantiers.png') }}" alt="Logo de l'entreprise" width="300" height="auto">
+        </div>
+        </center>
+        <!-- Encadré pour le changement de langue -->
+        <div class="language-selector">
+            <ul>
+                <li>
+                    <img src="{{ asset('drapeau_anglais.png') }}" alt="English Flag" width="30" height="auto">
+                    <a href="{{ route('change-language', ['locale' => 'en']) }}">English</a>
+                </li>
+                <li>
+                    <img src="{{ asset('drapeau_france.png') }}" alt="French Flag" width="30" height="auto">
+                    <a href="{{ route('change-language', ['locale' => 'fr']) }}">Français</a>
+                </li>
+            </ul>
+        </div>
+    </header>
 
-  <div class="container">
     <div class="container">
+        <div class="container">
+            <!-- Forme (fermeture manquante) -->
+            <!-- </form> -->
+            <!-- Utilisation incorrecte de la balise form -->
+        </div>
 
+        @yield('content')
     </div>
-    </form>
-
-    @yield('content')
-
-  </div>
 </body>
-
-</html>

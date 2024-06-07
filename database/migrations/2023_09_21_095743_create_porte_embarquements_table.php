@@ -11,21 +11,31 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('porte_embarquements')) {
-            Schema::create('porte_embarquements', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->boolean('est_ouverte')->default(false);
-            $table->integer('capacite_maximale');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('note_de_montage')) {
+            Schema::create('note_de_montage', function (Blueprint $table) {
+                $table->id();
+                $table->string('nom');
+                $table->boolean('est_actif')->default(false); // Renommage de la colonne
+                $table->integer('ordre_de_priorite')->nullable();
+                $table->text('note')->nullable(); // Ajout du champ "note"
+                $table->timestamps();
+            });
+        } else {
+            Schema::table('note_de_montage', function (Blueprint $table) {
+                $table->text('note')->nullable(); // Ajout du champ "note" s'il n'existe pas
+            });
+        }
     }
-    }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('porte_embarquements');
+        Schema::table('note_de_montage', function (Blueprint $table) {
+            $table->renameColumn('est_actif', 'est_ouverte'); // Revenir au nom précédent
+        });
+
+        // Le renommage de la table n'est pas nécessaire ici
     }
 };

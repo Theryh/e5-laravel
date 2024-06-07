@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{ route('hall.create') }}" class="btn btn-primary">Ajouter un hall</a>
+    <a href="{{ route('hall.create') }}" class="btn btn-primary">Ajouter une équipe</a>
 
     @foreach($halls as $hall)
         <h2>{{ $hall->nom }}</h2>

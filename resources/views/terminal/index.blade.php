@@ -17,7 +17,10 @@
     @csrf
 </form>
 @extends('layouts.app')
-
+<center><p>
+    <p><i>{{ __('messages.InfoBS') }} </i></p>
+    </p>
+</center>
 @section('content')
     <a href="{{ route('terminal.create') }}" class="btn btn-primary">{{__('messages.AjoutTerminal') }}</a>
 
@@ -32,7 +35,7 @@
         <form method="POST" action="{{ route('terminal.destroy', $terminal) }}" style="display: inline;">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de supprimer ce terminal?')">{{__('messages.Supp') }}</button>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de supprimer cette équipe ?')">{{__('messages.Supp') }}</button>
         </form>
     @endforeach
 @endsection

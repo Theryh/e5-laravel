@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Terminal extends Model
 {
     use HasFactory;
-//
+
+    protected $table = 'lignebs';
+
     protected $fillable = ['nom', 'emplacement', 'date_mise_en_service', '_token'];
 
     protected $factory = TerminalFactory::class;
