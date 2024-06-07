@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 =======
 =======
 ## Voici toutes les informations à savoir sur ce projet
